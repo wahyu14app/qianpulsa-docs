@@ -1,0 +1,16 @@
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
+database.sqlite
+package-lock.json
+public/uploads/
+.git/
+
+/src/generated/prisma
+prisma/dev.db
+prisma/dev.db-journal

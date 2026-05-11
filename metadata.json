@@ -1,0 +1,6 @@
+{
+  "name": "Qianpulsa docs",
+  "description": "Docs: Central AI Orchestrator and API Engine for QianPulsa SaaS Ecosystem. Manages API specs and coordinates Admin, Seller, and Store apps.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
