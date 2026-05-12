@@ -15,6 +15,7 @@ Untuk memahami bagaimana Namespace API dipisah berdasarkan target aplikasi Front
 Silakan telusuri artikel di bawah ini secara penuh untuk memulai sesi pemrograman dengan konteks sempurna:
 
 - 🗄️ [Skema Database Global Bersatu](/docs/database-schema) -> Referensi utama dari seluruh Model Prisma.
+- ⚙️ [Panduan Teknologi & Express.js](/docs/tech-stack) -> Instruksi tumpukan teknologi (Express, Zod, JWT).
 - 📡 [Standar Pola Request & Response](/docs/request-response) -> Struktur standar input/output JSON.
 - 🔐 [Sistem Autentikasi lintas App](/docs/authentication) -> Format JWT dan proteksi per-role.
 - 🗺️ [Struktur Routing & Endpoints](/docs/routing) -> Arsitektur Namespace API & Webhook.
