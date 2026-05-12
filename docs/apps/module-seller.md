@@ -209,9 +209,9 @@ Seluruh operasional pembayaran antara Seller dan Admin (pembayaran biaya langgan
 - Proses _Top Up_ ini menggunakan integrasi Payment Gateway dari sisi Admin (misal: **Xendit API**).
 - **Kebijakan Fee (Biaya Transaksi)**: Biaya layanan/fee Payment Gateway atas _Top Up_ ini **sepenuhnya ditanggung oleh Admin**. Artinya jika Seller melakukan deposit sebesar Rp 100.000, maka Saldo Virtual Platform Seller akan bertambah pas Rp 100.000, meskipun uang riil yang masuk ke rekening Admin mungkin telah dipotong fee (misal masuk 95.000). Hal ini untuk mempermudah kalkulasi biaya langganan secara bulat.
 
-## 14. Manajemen Konten Store (Dokumen, Banner & Notifikasi)
+## 14. Manajemen Konten Store (Dokumen, Banner & Notifikasi - Support-API)
 
-Seller dapat mengelola tampilan dan informasi untuk antarmuka Toko B2C miliknya dengan batasan berdasarkan Paket Langganan (_Subscription Plan_):
+**Catatan:** Pemrosesan endpoint untuk artikel, banner, dan blast notifikasi kini berada di rute **Support-API** (sistem terpisah). Seller dapat mengelola tampilan dan informasi untuk antarmuka Toko B2C miliknya dengan batasan berdasarkan Paket Langganan (_Subscription Plan_):
 
 - **Dokumentasi (`StoreDoc`)**: Seller bisa membuat artikel/panduan berformat markdown (.md) untuk dilihat Pelanggan Toko. Opsi ini dibatasi oleh limit paket.
 - **Notifikasi B2C (`StoreNotification`)**: Seller bisa mem-_blast_ notifikasi ke pelanggannya dengan menyematkan link/tautan ke Dokumentasi (`StoreDoc`). Dibatasi oleh _Limit Quota Bulanan_ langganan.
@@ -232,4 +232,5 @@ Fitur ini terikat pada Hak Akses Paket Langganan:
 
 - **Tersedia apabila**: Paket yang dipilih mengaktifkan `hasEmailNotif` atau `hasWhatsappNotif`.
 - **Media Pengiriman (Channel)**: Seller wajib memilih **salah satu** jalur notifikasi via kolom `activeChannel` (opsi: `EMAIL` atau `WHATSAPP`).
+- **Pesan ke Support-API via SystemTask**: Jika Core-API mendeteksi suatu event, ia tidak langsung mengirim pesan. Melainkan, Core-API akan menyisipkan _Task_ di tabel `SystemTask` yang nantinya diproses dan dieksekusi oleh Worker _Support-API_.
 - **Kostumisasi Peringatan (Toggles)**: Seller dapat memilih peringatan mana saja yang ingin mereka terima (misal: hanya men-_centang_ `notifyNewDeposit` dan mematikan `notifyTxSuccess`) agar terhindar dari _Spamming_.

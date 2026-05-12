@@ -10,11 +10,11 @@ Proses unggah dokumen dari sisi UI _(Front-End)_ maupun API _(Back-End)_ wajib d
 
 | Entitas Target                                              | Format Diizinkan (_Mime Types_)          | Maks. Ukuran | Catatan Tambahan (Rekomendasi UI)                                    |
 | :---------------------------------------------------------- | :--------------------------------------- | :----------- | :------------------------------------------------------------------- |
-| **Banner (Promo / Info)** <br> `AdminBanner`, `StoreBanner` | `.jpg`, `.jpeg`, `.png`, `.webp`         | **2 MB**     | Dimensi lanskap 16:9 atau 21:9.                                      |
+| **Banner (Promo / Info)** <br> (Support-API: `AdminBanner`, `StoreBanner`) | `.jpg`, `.jpeg`, `.png`, `.webp`         | **2 MB**     | Dimensi lanskap 16:9 atau 21:9.                                      |
 | **Ikon / Logo Toko**                                        | `.jpg`, `.jpeg`, `.png`, `.webp`, `.svg` | **1 MB**     | Dimensi _square_ (1:1), direkomendasikan min. 256x256 px.            |
 | **Foto Profil** <br> `Customer`, `Seller`, `Staff`          | `.jpg`, `.jpeg`, `.png`, `.webp`         | **1 MB**     | Sebaiknya dikompres _Client-side_ terlebih dahulu ke format `.webp`. |
 | **Foto KYC / KTP (Identitas)**                              | `.jpg`, `.jpeg`, `.png`, `.pdf`          | **3 MB**     | Resolusi harus tajam karena sering diperlukan untuk _OCR_ admin.     |
-| **Lampiran Chat Support (Tiket)**                           | `.jpg`, `.jpeg`, `.png`, `.webp`         | **2 MB**     | Berupa screenshot/foto bukti kendala.                                |
+| **Lampiran Chat Support (Tiket)** <br> (Support-API)        | `.jpg`, `.jpeg`, `.png`, `.webp`         | **2 MB**     | Berupa screenshot/foto bukti kendala.                                |
 
 > **Catatan Endpoint (`multipart/form-data`)**: Back-End harus mengembalikan status `HTTP 413 Payload Too Large` jika ada file yang dikirim melampaui batasan di atas.
 
@@ -31,7 +31,7 @@ Panjang `String` yang diterima oleh Endpoint API harus selalu dilimit secara eks
 
 ### b. Konten dan Publikasi (Dokumen / Notifikasi)
 
-Pada fitur-fitur seperti _Docs_ dan _Blast Notification_, kita menggunakan tipe data Text panjang, namun Endpoint tidak boleh tanpa filter:
+Pada fitur-fitur seperti _Docs_ dan _Blast Notification_ (yang kini ditangani oleh **Support-API**), kita menggunakan tipe data Text panjang, namun Endpoint tidak boleh tanpa filter:
 
 - **`title` (Judul)** `AdminDoc`, `StoreDoc` : Maks **100 Karakter**.
 - **Judul Tiket (`subject`)** `SupportTicket` : Maks **100 Karakter**.

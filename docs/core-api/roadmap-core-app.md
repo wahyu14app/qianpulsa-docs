@@ -3,7 +3,7 @@
 Fokus utama: Membangun fondasi sistem, manajemen database, keamanan, dan integrasi vendor PPOB/Payment.
 
 ## Fase 1: Fondasi & Basis Data
-1.  **Environment Setup**: Konfigurasi Express, TypeScript, dan Prisma.
+1.  **Environment Setup**: Konfigurasi Fastify, TypeScript, dan Prisma.
 2.  **Database Migration**: Eksekusi `prisma migrate` berdasarkan `database-schema.md`.
 3.  **Basic Seeding**: Membuat data Super Admin, Kategori awal, dan Paket Langganan Global.
 4.  **Security Layer**: Implementasi JWT Auth, Password Hashing (Argon2/Bcrypt), dan Rate Limiting.

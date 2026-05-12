@@ -19,9 +19,9 @@ Paket langganan (`SubscriptionPlan`) sengaja dipatenkan menjadi **tepat 3 tingka
 - Admin hanya diperbolehkan melakukan Edit (UPDATE) pada Nama Paket, Harga, maupun fasilitas fiturnya (Fitur Reset Quota bulanan, Fitur Limit tetap, dan Fitur Akses Boolean).
 - **Mekanisme Copy State Fleksibel**: Ketika ada perubahan data paket oleh Admin, Toko (Store) yang sebelumnya terdaftar _TIDAK AKAN RUSAK_. Karena setiap tabel `Store` menyimpan/meng-copy langsung kapabilitas paket (seperti batas maksimal banner, kuota maksimal notifikasi bulanan, atau akses widget live chat) sesaat setelah Seller meng-_upgrade/downgrade_ langganannya.
 
-## 3. Dokumentasi, Banner, & Notifikasi Platform
+## 3. Dokumentasi, Banner, & Notifikasi Platform (Ditangani oleh Support-API)
 
-Admin dapat mempublikasikan informasi sistem (pengumuman, panduan, dsb) kepada seluruh jaringan _Seller_:
+Admin dapat mempublikasikan informasi sistem (pengumuman, panduan, dsb) kepada seluruh jaringan _Seller_. **Catatan:** Seluruh fitur berikut kini diolah dan dilayani melalui rute/layanan **Support-API**:
 
 - **Dokumentasi (`AdminDoc`)**: Admin dapat membuat dan menerbitkan file dokumentasi berformat _.md (markdown)_ **tanpa batas**. Dokumen ini dapat diatur visibilitasnya (ditampilkan/disembunyikan).
 - **Banner (`AdminBanner`)**: Admin dapat mengunggah dan menampilkan _banner_ sistem **tanpa batas** kuota. Banner ini bisa disematkan tautan langsung ke _Dokumentasi (`AdminDoc`)_ yang sudah dibuat sebelumnya.
