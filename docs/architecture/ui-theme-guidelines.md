@@ -4,9 +4,9 @@ Dokumen ini memuat standar desain, pemilihan warna, dan pengelolaan tema (Light/
 
 ## 1. Aturan Mode Gelap (Dark Mode) & Terang (Light Mode)
 
-- **Halaman Publik (Guest Area)**: Seluruh halaman yang bersifat publik atau diakses sebelum login (seperti Landing Page utaman, halaman Tentang Kami, atau halaman Login/Register) **HANYA BOLEH menggunakan Mode Terang (Light Mode)**. Dilarang mengimplementasi Dark Mode pada halaman-halaman guest ini agar konsistensi _branding_ awal tetap terjaga.
-- **Halaman Dashboard (Protected Area)**: Baik Admin App, Seller App, maupun Store App (setelah login) harus mendukung peralihan **Mode Terang** dan **Mode Gelap**.
-- **Warna Identitas Dark Mode**: Jika pengguna mengaktifkan Mode Gelap, latar belakang (background) kanvas utama **WAJIB** menggunakan warna **Hex `#000000`** (Hitam Pekat / _True Pitch Black_). Dilarang menggunakan warna _Dark Gray_ standar Tailwind seperti `zinc-900` atau `slate-900` sebagai _background body_ utama di Dark Mode. Tujuannya adalah memberikan kontras maksimal dan menghemat baterai layar OLED.
+- **Halaman Publik (Guest Area)**: Seluruh halaman yang bersifat publik atau diakses sebelum login (seperti Landing Page utama, halaman Tentang Kami, atau halaman Login/Register) **HANYA BOLEH menggunakan Mode Terang (Light Mode)**. Dilarang mengimplementasi Dark Mode pada halaman-halaman guest ini agar konsistensi _branding_ awal tetap terjaga.
+- **Halaman Dashboard (Protected Area)**: Khusus **Seller App** dan **Store App** (setelah login) harus mendukung peralihan **Mode Terang** dan **Mode Gelap**. *(Untuk Admin App, biarkan AI Studio menentukan desain dan temanya sendiri secara bebas)*.
+- **Warna Identitas Dark Mode (Seller & Store App)**: Jika pengguna mengaktifkan Mode Gelap pada Seller App atau Store App, latar belakang (background) kanvas utama **WAJIB** menggunakan warna **Hex `#000000`** (Hitam Pekat / _True Pitch Black_). Dilarang menggunakan warna _Dark Gray_ standar Tailwind seperti `zinc-900` atau `slate-900` sebagai _background body_ utama di Dark Mode. Tujuannya adalah memberikan kontras maksimal dan mempresentasikan desain yang solid.
 
 ## 2. Branding & Warna Utama (Primary Color)
 
@@ -14,8 +14,8 @@ Setiap aplikasi Frontend memiliki identitas warna _Primary_ tersendiri yang waji
 
 ### A. Admin App
 
-- **Primary Color**: **Kuning (Yellow)**.
-- Seluruh elemen aksi (tombol _Approve_, ikon notifikasi, garis tepi kanvas yang aktif) harus berpusat pada hierarki warna Kuning. Cocok disandingkan dengan background Light (putih murni) atau Dark (`#000000`).
+- **Primary Color**: **Bebas (Disesuaikan oleh AI Studio)**.
+- Tema, skema warna, mode gelap/terang, dan tata letak untuk Admin App dibebaskan sepenuhnya agar AI Studio dapat merancang desain panel antarmuka yang optimal dan seprofesional mungkin.
 
 ### B. Seller App (Panel B2B)
 
