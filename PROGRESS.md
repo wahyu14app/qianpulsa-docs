@@ -48,11 +48,11 @@ Core Architecture Philosophy:
     - `...`
 
 Fase	Status	Fitur Utama	
-Fase 1	✅ Selesai	Fondasi, DB Schema, Security, JWT, Zod, Seeder	
-Fase 2	✅ Selesai	Auth 3 App, Chat Support, Wallet Ledger, Store Init	
-Fase 3	✅ Selesai	Digiflazz, Xendit, Midtrans, Webhook, Auto-Refund, Notifikasi	
-Fase 4	✅ Selesai	Markup Rules, Customer Tiers, Subscriptions, Staff CRUD, Analytics
-Fase 5	🔄 Proses	Audit API: QA Endpoint, Cek Integritas Saldo (Ledger), Load/Concurrency Testing, Security & Penetration Testing, Bug Fixing.
+Fase 1	✅ Fondasi, DB Schema, Security, JWT, Zod, Seeder	
+Fase 2	✅ Auth 3 App, Chat Support, Wallet Ledger, Store Init	
+Fase 3	✅ Digiflazz, Xendit, Midtrans, Webhook, Auto-Refund, Notifikasi	
+Fase 4	✅ Markup Rules, Customer Tiers, Subscriptions, Staff CRUD, Analytics
+Fase 5	🔄 Audit API: QA Endpoint, Cek Integritas Saldo (Ledger), Load/Concurrency Testing, Security & Penetration Testing, Bug Fixing.
 
 ---
 
