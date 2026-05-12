@@ -36,43 +36,45 @@ Sebagai Agen AI, identifikasi aplikasi mana yang diminta oleh pengguna untuk kam
 Jika kamu ditugaskan membangun, mengedit, atau menambahkan fitur Backend API:
 
 1. Gerbang utama Backend: 📖 [`/docs/intro.md`](docs/intro.md)
-2. Skema & Model Database: 📖 [`/docs/database-schema.md`](docs/database-schema.md)
-3. Endpoint & Namespace Rute: 📖 [`/docs/routing.md`](docs/routing.md)
-4. Fitur Tiket & Chat Bantuan: 📖 [`/docs/module-chat-support.md`](docs/module-chat-support.md)
-5. Proteksi, Batasan Payload & Standar Respon: 📖 [`/docs/authentication.md`](docs/authentication.md), 📖 [`/docs/limits-and-constraints.md`](docs/limits-and-constraints.md) dan 📖 [`/docs/request-response.md`](docs/request-response.md)
-6. Pedoman Desain & Tema UI: 📖 [`/docs/ui-theme-guidelines.md`](docs/ui-theme-guidelines.md)
+2. Skema & Model Database: 📖 [`/docs/architecture/database-schema.md`](docs/architecture/database-schema.md)
+3. Endpoint & Namespace Rute: 📖 [`/docs/architecture/routing.md`](docs/architecture/routing.md)
+4. Fitur Tiket & Chat Bantuan: 📖 [`/docs/support-api/module-chat-support.md`](docs/support-api/module-chat-support.md)
+5. Proteksi, Batasan Payload & Standar Respon: 📖 [`/docs/architecture/authentication.md`](docs/architecture/authentication.md), 📖 [`/docs/architecture/limits-and-constraints.md`](docs/architecture/limits-and-constraints.md) dan 📖 [`/docs/architecture/request-response.md`](docs/architecture/request-response.md)
+6. Pedoman Desain & Tema UI: 📖 [`/docs/architecture/ui-theme-guidelines.md`](docs/architecture/ui-theme-guidelines.md)
 7. **Panduan Implementasi Spesifik**:
-   - 📖 [Roadmap: Core App](/docs/roadmap-core-app.md)
-   - 📖 [Roadmap: Admin App](/docs/roadmap-admin-app.md)
-   - 📖 [Roadmap: Seller App](/docs/roadmap-seller-app.md)
-   - 📖 [Roadmap: Store App](/docs/roadmap-store-app.md)
-8. **Checklist Pengujian**: 📖 [`/docs/verification-checklist.md`](docs/verification-checklist.md)
+   - 📖 [Roadmap: Core App](/docs/core-api/roadmap-core-app.md)
+   - 📖 [Roadmap: Support API](/docs/support-api/roadmap-support-api.md)
+   - 📖 [Roadmap: Admin App](/docs/apps/roadmap-admin-app.md)
+   - 📖 [Roadmap: Seller App](/docs/apps/roadmap-seller-app.md)
+   - 📖 [Roadmap: Store App](/docs/apps/roadmap-store-app.md)
+8. **Checklist Pengujian**: 📖 [`/docs/architecture/verification-checklist.md`](docs/architecture/verification-checklist.md)
 
 ### 🤵 Jalur Pembuatan Web Admin (God-Mode)
 
 Jika kamu ditugaskan membangun Front-End Admin:
 
-- Baca detail kapabilitas dan fungsionalitas admin: 📖 [`/docs/module-admin.md`](docs/module-admin.md)
+- Baca detail kapabilitas dan fungsionalitas admin: 📖 [`/docs/apps/module-admin.md`](docs/apps/module-admin.md)
 
 ### 🏪 Jalur Pembuatan Web Seller (B2B Panel)
 
 Jika kamu ditugaskan membangun Front-End Seller (Manajemen Toko PPOB):
 
-- Baca alur bisnis seller, paket langganan, dan manajemen tokonya: 📖 [`/docs/module-seller.md`](docs/module-seller.md)
+- Baca alur bisnis seller, paket langganan, dan manajemen tokonya: 📖 [`/docs/apps/module-seller.md`](docs/apps/module-seller.md)
 
 ### 🛒 Jalur Pembuatan Web Store (B2C Storefront)
 
 Jika kamu ditugaskan membangun Front-End Etalase Toko untuk pelanggan akhir:
 
-- Pahami rute web, manajemen state, inisialisasi API yang digunakan: 📖 [`/docs/module-store.md`](docs/module-store.md)
+- Pahami rute web, manajemen state, inisialisasi API yang digunakan: 📖 [`/docs/apps/module-store.md`](docs/apps/module-store.md)
 
 ---
 
 ## 📝 3. Aturan Tambahan (The Golden Rules)
 
-1. **SSOT (Single Source of Truth):** Repo ini adalah wujud kebenaran mutlak arsitektur aplikasi (khususnya untuk penamaan kolom/relasi pada database Prisma di `/docs/database-schema.md`).
+1. **SSOT (Single Source of Truth):** Repo ini adalah wujud kebenaran mutlak arsitektur aplikasi (khususnya untuk penamaan kolom/relasi pada database Prisma di `/docs/architecture/database-schema.md`).
 2. **No Coding in Repo:** Repositori ini murni tempat dokumentasi teks (`.md`).
 3. **Pahami Batasan:** AI dilarang mengubah aturan baku yang sudah ditetapkan di sini, jika terdapat improvisasi, tambahkan/ubah Markdown di dokumentasi ini terlebih dahulu sebelum memproduksi kode-nya.
+4. **Indeks Raw Mode:** Untuk Robot/AI yang membaca basis data dokumen ini tanpa fasilitas terminal (`ls`, `tree`), bisa mengambil rute `https://wahyu14app.github.io/qianpulsa-docs/raw/index.html` (atau membaca raw mentah di folder `/raw/data.json`) untuk mengambil susunan penuh *tree index* dokumentasi.
 
 ---
 
