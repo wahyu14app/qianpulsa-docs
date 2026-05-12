@@ -3,6 +3,8 @@ import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
+  // Use relative base path for GitHub Pages compatibility
+  base: './',
   plugins: [
     react(),
     tailwindcss(),
