@@ -1,35 +1,39 @@
-# [AI AGENT ENTRYPOINT] Core App Architecture
+# 📖 Pengenalan Struktur Dokumentasi QianPulsa
 
-**PENTING UNTUK AI STUDIO:** Dokumen ini dan rute tautan di dalamnya dirancang **khusus untuk dibaca oleh Anda (AI Agent)** sebagai panduan utuh (System Prompt & arsitektur proyek). Web ini tidak perlu dibaca manusia, audiensnya adalah agen AI. Jangan gunakan fallback knowledge; gunakan selalu referensi dokumen di folder `/docs/`. Saat merancang _core-app_ maupun _support-api_, selami dokumen secara berurutan.
+Dokumentasi ini telah dibagi menjadi **Dua Sistem Utama** untuk memudahkan navigasi antara Manusia (Human) dan AI (Agentic Assistant).
 
-## 1. Definisi & Pendahuluan
+## 1. 🧑‍💻 Panduan Bisnis (Human Manual) - `/docs/human-manual/`
+Folder ini ditujukan terutama untuk **Manusia (Tim Bisnis, Product Owner, dsb)** meskipun AI akan tetap membacanya untuk memahami konteks fitur.
+Berisi definisi bisnis, kemampuan aplikasi (Admin, Seller, Store), dan arsitektur fitur.
 
-Ekosistem QianPulsa menggunakan arsitektur **Distributed Services Architecture**.
-- **Core-API (core-app)**: Sebagai _Single Source of Truth_ untuk pemrosesan backend berbasis finansial, pembuatan log, aturan bisnis (_business logic_), integrasi pihak ketiga, dan manajemen database finansial.
-- **Support-API (support-app)**: Sebagai layanan pendukung untuk fitur-fitur non-finansial seperti chat, notifikasi, banner, dan manajemen konten untuk menurunkan beban Core-API.
+**Daftar Dokumen Bisnis:**
+- 📖 [Pengenalan Human Manual](/docs/human-manual/intro.md)
+- 🏢 [Pengenalan Ekosistem & Tenant](/docs/human-manual/tenant_ecosystem.md)
+- 💰 [Sistem Transaksi, Cashback & Referral](/docs/human-manual/transaction.md)
+- 👥 [Manajemen Pengguna & Role](/docs/human-manual/user_management.md)
+- 🔌 [Integrasi Pihak Ketiga](/docs/human-manual/integrations.md)
 
-## 2. Struktur Rute (Routing)
+## 2. 🤖 Panduan Eksekusi AI (AI Prompts) - `/docs/ai-prompts/`
+Folder ini dirancang **Eksklusif untuk AI Assistant**. Berisi *prompt step-by-step* untuk mengerjakan tugas pemrograman secara bertahap.
+AI **Wajib** menjadikan file di folder ini sebagai acuan eksekusi teknis.
 
-Untuk memahami bagaimana Namespace API dipisah, silakan baca langsung di tautan: 🗺️ [Struktur Routing & Endpoints](/docs/architecture/routing).
+**Daftar Instruksi Pengerjaan (Roadmap):**
+- 📋 [Standar Alur Kerja & Prasyarat Coding](/docs/ai-prompts/00-workflow-standard.md)
+- ⚙️ [Tahap 1: Core App & API Engine](/docs/ai-prompts/step-02-core-api.md)
+- 🤵 [Tahap 2: Admin App](/docs/ai-prompts/step-03-admin-app.md)
+- 🏪 [Tahap 3: Seller App](/docs/ai-prompts/step-04-seller-app.md)
+- 🛒 [Tahap 4: Store App](/docs/ai-prompts/step-05-store-app.md)
 
-## Topik Lanjutan (MANDATORY READ FOR AI)
+## 3. 🏗️ Referensi Arsitektur Sistem - `/docs/architecture/`
+Dokumentasi teknis yang dibaca oleh manusia & AI untuk merancang integrasi dan struktur kode yang seragam.
+- 🗄️ [Skema Database Global](/docs/architecture/database-schema.md)
+- 📡 [Standar Konektivitas Rest/API](/docs/architecture/request-response.md)
+- 🗺️ [Struktur Routing Endpoints](/docs/architecture/routing.md)
+- 🔑 [Setup Autentikasi JWT](/docs/architecture/authentication.md)
+- 🔌 [Integrasi 3rd Party API](/docs/architecture/integrations.md)
 
-Silakan telusuri artikel di bawah ini secara penuh untuk memulai sesi pemrograman dengan konteks sempurna:
-
-- 🗄️ [Skema Database Global Bersatu](/docs/architecture/database-schema) -> Referensi utama dari seluruh Model Prisma.
-- ⚙️ [Panduan Teknologi & Fastify](/docs/architecture/tech-stack) -> Instruksi tumpukan teknologi (Fastify, Zod, JWT).
-- 📡 [Standar Pola Request & Response](/docs/architecture/request-response) -> Struktur standar input/output JSON.
-- 🔐 [Sistem Autentikasi lintas App](/docs/architecture/authentication) -> Format JWT dan proteksi per-role.
-- 🗺️ [Struktur Routing & Endpoints](/docs/architecture/routing) -> Arsitektur Namespace API & Webhook.
-- 🔌 [Integrasi Database, Email & WhatsApp](/docs/architecture/integrations) -> Pendekatan pihak ketiga.
-- 🛡️ [Support-API Overview](/docs/support-api/support-api-overview) -> Arsitektur & fitur Support-API.
-- 🤵 [Spesifikasi Modul Admin](/docs/apps/module-admin) -> Alur kontrol panel & God-Mode.
-- 🏪 [Spesifikasi Modul Seller](/docs/apps/module-seller) -> Alur deposit seller vs store, aturan beli platform dan langganan.
-- 🛒 [Spesifikasi Modul Store (B2C)](/docs/apps/module-store) -> Spesifikasi koneksi Customer App, Routing Store-App, Dashboard, Web PWA/Mobile.
-- 🚀 **Roadmap Pengerjaan**:
-  - [Core App (Backend)](/docs/core-api/roadmap-core-app)
-  - [Support App (Support API)](/docs/support-api/roadmap-support-api)
-  - [Admin App (God Mode)](/docs/apps/roadmap-admin-app)
-  - [Seller App (B2B Dashboard)](/docs/apps/roadmap-seller-app)
-  - [Store App (B2C Storefront)](/docs/apps/roadmap-store-app)
-- ✅ [Panduan Verifikasi & Checklist](/docs/architecture/verification-checklist) -> Standar pengujian aplikasi.
+---
+**PENGINGAT UNTUK AI:** Saat menerima instruksi, pastikan Anda merujuk pada:
+1. **Human Manual** (Untuk memahami *What* dan *Why* dari sebuah fitur).
+2. **Architecture** (Untuk memahami struktur tabel dan data).
+3. **AI Prompts** (Untuk mengeksekusi urutan langkah coding *How-to* secara sistematis).
