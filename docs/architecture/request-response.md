@@ -67,7 +67,8 @@ Setiap Front-End Client (saat request ke backend) **wajib menyertakan Header ber
 
 1. `Authorization: Bearer <TOKEN_JWT_DISINI>` (Jika endpoint membutuhkan otentikasi)
 2. `x-app-origin: <admin | seller | store>` (Identifikasi tipe Front-End yang memanggil API)
-3. Khusus klien `store`:
+3. `x-app-client-key: <CLIENT_SECRET_KEY>` (Kunci rahasia/Client Key dari masing-masing tipe app untuk memvalidasi bahwa request berasal dari aplikasi resmi buatan kita dan mencegah _hit_ palsu melalui Postman/curl. Jika header ini tidak ada atau tidak cocok, API akan menolak dengan error "Akses ditolak: client key tidak cocok" atau sejenisnya).
+4. Khusus klien `store`:
    - `x-store-domain: <DOMAIN_TOKO_YANG_SEDANG_DIAKSES>` (Penting untuk backend menentukan konfigurasi harga _markup_ dan tema warna).
 
 ## 3. Payload Request & Validasi (Zod)
