@@ -2,9 +2,17 @@
 
 Dokumen ini adalah **Wajib Baca** bagi setiap agen AI sebelum memulai tugas coding. Kegagalan mematuhi alur ini akan menyebabkan penolakan atau *refactoring* paksa.
 
-## 1. Golden Rule AI Workflow
+## 1. Aturan Eksekusi Berfase (Phasing & Pausing Rule) - PENTING!
 
-Setiap tugas pengembangan **HARUS** melalui 3 tahapan ini secara berurutan:
+Agen AI **HANYA BOLEH MENGERJAKAN SATU FASE** dalam satu waktu (satu putaran eksekusi/prompt).
+1. **Pilih Fase:** Deklarasikan fase apa yang akan dikerjakan di awal respons.
+2. **Kerjakan Fase:** Selesaikan seluruh instruksi pada fase tersebut (Konteks, Implementasi, Verifikasi).
+3. **Catat Progress:** Setelah menyelesaikan fase, edit file roadmap terkait (seperti `step-XX-*.md`) untuk menandai item/langkah fase tersebut telah selesai (misalnya tambahkan `[x]` atau keterangan `(SELESAI)`).
+4. **BERHENTI! (PAUSE):** Setelah progress dicatat, **JANGAN** melanjutkan ke fase berikutnya. Ringkas apa yang sudah diselesaikan, laporkan, lalu akhir sesi Anda (stop generation) dan tunggu persetujuan dari manusia ("Silakan lanjut ke fase X").
+
+## 2. Golden Rule AI Workflow
+
+Setiap tugas/fase pengembangan **HARUS** melalui 3 tahapan iteratif ini:
 
 ### Tahap A: Konteks & Prasyarat (Context Awareness)
 Sebelum menulis satu barispun kode:
@@ -21,7 +29,7 @@ Sebelum menulis satu barispun kode:
 1. **Checklist**: Jalankan verifikasi berdasarkan `/docs/architecture/verification-checklist.md`.
 2. **Linting & Build**: Jalankan `lint_applet` dan `compile_applet` (sesuai arahan tool).
 
-## 2. Tabel Matriks Prasyarat Coding
+## 3. Tabel Matriks Prasyarat Coding
 
 | Target Tugas | Prasyarat Wajib Baca (Sesi Konteks) |
 | :--- | :--- |
@@ -29,7 +37,7 @@ Sebelum menulis satu barispun kode:
 | **Database/Prisma** | `architecture/database-schema.md` |
 | **Autentikasi** | `architecture/authentication.md` |
 | **Modul Bisnis (Apps)** | `apps/module-*.md` dan API teknis terkait |
-| **Integrasi** | `architecture/integrations.md` |
+| **Integrasi** | `human-manual/integrations.md`, `architecture/integrations.md` |
 
 ---
 **Pesan Akhir:** Jika Anda menemukan dokumentasi yang usang, bentrok, atau kurang informatif saat menjalankan alur ini, **tugas pertama Anda adalah memperbaiki dokumentasi tersebut** sebelum melanjutkan coding. Jangan mengasumsikan apapun.

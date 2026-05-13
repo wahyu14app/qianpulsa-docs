@@ -18,4 +18,14 @@ Fokus utama: Dashboard bagi pemilik toko untuk mengelola bisnis mereka.
 3.  **Customer Management**: Mengelola daftar pembeli terdaftar dan mengubah status akun mereka.
 
 ---
-**Status Selesai**: Seller dapat menjalankan bisnis PPOB secara mandiri tanpa campur tangan Admin.
+**Status**: Siap untuk dieksekusi berdasarkan fase. Saat memulai tugas, AI **HARUS** mendeklarasikan fase mana yang sedang dikerjakan.
+
+**ATURAN EKSEKUSI (PENTING)**:
+1. Kerjakan **HANYA SATU FASE** dari daftar di atas.
+2. Setelah selesai, **EDIT DOKUMEN INI** (tambahkan tanda `[x]` atau `(SELESAI)` pada nama fase yang berhasil diselesaikan) untuk mencatat progress.
+3. **BERHENTI SEPENUHNYA** dan berikan laporan selesainya fase tersebut kepada User.
+4. Tunggu persetujuan User ("Lanjut ke Fase X") sebelum menulis kode untuk fase berikutnya.
+
+**Prasyarat Pekerjaan**:
+- Pastikan semua file di `/docs/architecture/` sudah dipahami sebelum menyentuh kode.
+- Selalu merujuk pada `/docs/architecture/database-schema.md` sebelum melakukan perubahan skema.
