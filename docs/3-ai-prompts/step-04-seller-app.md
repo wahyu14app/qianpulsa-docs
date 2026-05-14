@@ -3,12 +3,16 @@
 Fokus utama: Dashboard operasi B2B bagi pemilik toko untuk mengelola infrastruktur retail mereka sendiri.
 
 ## Aturan Fundamental (Absolute Law)
-Halaman awal dashboard ini **bergantung sepenuhnya** pada status akun. Jika Seller baru saja mendaftar, **KUNCI SEMUA MENU** kecuali menu "Pilih Paket & Deposit Platform". Hanya setelah mereka memiliki langganan aktif, menu operasional terbuka. Semua keuntungan markup masuk ke akun Payment Gateway Seller secara mandiri, bukan ke platform Qianpulsa.
+Halaman awal dashboard ini **bergantung sepenuhnya** pada status penyewaan toko. Khusus untuk AI: Pahami secara absolut perbedaan **Platform Media** (wujud toko: Web, Android, iOS) dan **Subscription** (tier langganan fitur). Seller harus mempunyai Platform, lalu mensubscribe Paket Fitur.
+
+Jika Seller baru saja mendaftar, **KUNCI SEMUA MENU** kecuali menu "Pilih Platform", "Pilih Paket Langganan" & "Deposit ke Admin Platform". Hanya setelah mereka memiliki Platform Media DAN langganan aktif, menu operasional terbuka. Semua keuntungan markup produk masuk ke akun Payment Gateway Seller secara mandiri, bukan ke platform Qianpulsa.
 
 ## Fase 1: Onboarding & Pembatasan Akun
 1.  **Registration & Login**: Akses `SELLER` dan `SELLER_STAFF`.
-2.  **The Paywall**: Jika tidak punya langganan aktif -> Layar hanya menampilkan antarmuka Status Billing (Deposit ke Induk Platform, Beli/Perbarui Paket Langganan).
-3.  **Store Configuration (Unlocked)**: Jika langganan aktif -> Pengaturan nama Toko, Domain/Subdomain, dan Banner Toko.
+2.  **The Paywall (Gerbang Berbayar)**: Jika belum memenuhi syarat operasional -> Layar hanya menampilkan billing/tagihan.
+    - **Step 1:** Seller harus membeli **Platform Media** (Memilih berwujud Web, Android, atau iOS) agar tokonya memiliki eksistensi tayang.
+    - **Step 2:** Seller harus membeli **Paket Langganan / Subscription** (Tingkatan fitur/tier) untuk membuka akses fungsional toko.
+3.  **Store Configuration (Unlocked)**: Jika **kedua** syarat di atas (*Platform & Subscription*) dalam kondisi Aktif -> Pengaturan nama Toko, Domain/Subdomain, dan Banner Toko terbuka.
 
 ## Fase 2: Integrasi API Finansial & Provider (Krusial)
 1.  **PG Keys**: Halaman bagi Seller untuk menyimpan kredensial Payment Gateway (Misal: API Key Xendit/Fazz/Tripay) SECARA AMAN di database `SellerApiSetting`.

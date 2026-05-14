@@ -3,7 +3,7 @@
 Fokus utama: Membangun Panel B2B God-Mode (Admin Dashboard).
 
 ## Aturan Fundamental (Absolute Law)
-Aplikasi Admin BUKAN untuk mengurusi uang transaksi jualan pulsa atau mengurusi kenapa deposit pelanggan telat, melainkan murni infrastruktur **Penyewaan SaaS**. Admin Apps hanya menangani pengelolaan `Store` (pendaftaran/pembekuan Seller) dan pengelolaan `Subscription Plan`.
+Aplikasi Admin BUKAN untuk mengurusi uang transaksi jualan pulsa atau mengurusi kenapa deposit pelanggan telat, melainkan murni infrastruktur **Penyewaan SaaS**. Admin Apps hanya menangani pengelolaan `Store` (pendaftaran/pembekuan Seller), serta penjualan **Platform Media** dan **Subscription Plan**.
 
 ## Fase 1: Autentikasi & Akses
 1.  **Secure Login**: Akses khusus untuk Admin (`SUPER_ADMIN`, `ADMIN_STAFF`).
@@ -18,9 +18,13 @@ Aplikasi Admin BUKAN untuk mengurusi uang transaksi jualan pulsa atau mengurusi 
 2.  **Kontrol Status**: Pembekuan (`SUSPEND`) akun seller jika melanggar Syarat dan Ketentuan, yang berdampak pada mode "Maintenance" di toko milik mereka.
 3.  **Deposit Seller**: Monitoring arus masuk uang dari Seller yang mendeposit (via Payment Gateway Induk platform) yang tujuannya untuk membayar biaya platform bulanan/tahunan.
 
-## Fase 4: Manajemen Platform & Berlangganan (SaaS)
-1.  **Master Platform**: Setup tipe-tipe Platform yang dapat disewa Seller (Web App, Android, iOS APK) beserta setting tarif perilisannya.
-2.  **Subscription Tier Management**: Mengatur limitasi teknis, harga fitur, dan siklus tagihan tier langganan untuk Seller.
+## Fase 4: Manajemen Layanan SaaS (Platform Media & Subscription)
+**PENGINGAT KERAS UNTUK AI: "Platform" dan "Subscription" adalah DUA HAL YANG SANGAT BERBEDA:**
+- **Platform (Media Distribusi)**: Merupakan medium "wujud" toko (misal: Aplikasi Web, Aplikasi Android, Aplikasi iOS). Seller WAJIB membeli minimal satu medium ini agar tokonya punya tempat untuk tayang.
+- **Subscription (Paket Langganan)**: Merupakan "level/tier" dari fitur toko (misal: Starter, Pro, Enterprise). Mengatur jumlah maksimal staf, batas transaksi, dll. Ini wajib dimiliki *setelah* memiliki Platform.
+
+1.  **Halaman Master Platform**: Admin melakukan CRUD daftar tipe Platform (Web/Android/iOS) beserta harga perilisannya.
+2.  **Halaman Master Subscription Tier**: Admin melakukan CRUD tingkat langganan (Starter/Pro), mengatur harganya, dan melimitasi teknis (seperti jumlah produk maksimal) dalam tier langganan untuk Seller.
 
 ## Fase 5: Manajemen Store & Laporan (Read-Only)
 1.  **Data Store**: Melihat agregat domain/subdomain toko yang hidup di bawah naungan platform.

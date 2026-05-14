@@ -5,7 +5,7 @@ Seller merupakan target B2B dari platform QianPulsa, yang memposisikan diri seba
 
 ## 2. Alur Kerja Utama (*Key Workflows*)
 - **Pendaftaran**: Pendaftaran otomatis disetujui. Setelah daftar, akun dalam kondisi *Suspended* (hanya akses Menu Deposit).
-- **Onboarding**: Beli platform (Web/App) -> Beli paket langganan (Subscription) -> Toko diaktifkan (Kanvas kosong).
+- **Onboarding**: Beli **Platform Media** (Beli wujud toko: Web/Android/iOS) -> Beli **Paket Langganan / Subscription Plan** (Beli tier fitur operasional) -> Toko diaktifkan (Kanvas kosong).
 - **Konfigurasi Operasional**: Integrasi API PPOB (Digiflazz) & Payment Gateway (milik seller sendiri), Markup harga, Manajemen Status Transaksi.
 - **Manajemen Staf**: `ROOT_SELLER` dapat mengelola beberapa akun `SELLER_STAFF` (email unik & independen).
 
