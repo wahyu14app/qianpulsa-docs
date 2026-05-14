@@ -24,7 +24,7 @@ Aplikasi Admin BUKAN untuk mengurusi uang transaksi jualan pulsa atau mengurusi 
 - **Subscription (Paket Langganan)**: Merupakan "level/tier" dari fitur toko (misal: Starter, Pro, Enterprise). Mengatur jumlah maksimal staf, batas transaksi, dll. Ini wajib dimiliki *setelah* memiliki Platform.
 
 1.  **Halaman Master Platform**: Admin melakukan CRUD daftar tipe Platform (Web/Android/iOS) beserta harga perilisannya.
-2.  **Halaman Master Subscription Tier**: Admin melakukan CRUD tingkat langganan (Starter/Pro), mengatur harganya, dan melimitasi teknis (seperti jumlah produk maksimal) dalam tier langganan untuk Seller.
+2.  **Halaman Master Subscription Tier**: Admin melakukan modifikasi tingkat langganan. **PENTING: Hanya ada mutlak 3 level tier (Misal: Starter, Pro, Enterprise). Admin HANYA BISA melakukan *Update* (mengubah harga, limitasi, nama), tetapi DILARANG KERAS menyediakan fitur untuk menghapus (*Delete*) atau menambah (*Create*) tier baru demi menjaga kelangsungan Seller yang sudah mensubscribe tier tersebut.**
 
 ## Fase 5: Manajemen Store & Laporan (Read-Only)
 1.  **Data Store**: Melihat agregat domain/subdomain toko yang hidup di bawah naungan platform.

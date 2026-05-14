@@ -109,8 +109,8 @@ model PlatformType {
 }
 
 model SubscriptionPlan {
-  id              String   @id @default(uuid())
-  level           Int      @unique 
+  id              String   @id @default(uuid()) // PENTING: Hanya boleh ada 3 row data ini di database (Misal: Starter, Pro, Enterprise).
+  level           Int      @unique // 1 = Starter, 2 = Pro, 3 = Enterprise
   name            String   @unique 
   price           Decimal  @db.Decimal(15, 2)
   durationDays    Int      @default(30)

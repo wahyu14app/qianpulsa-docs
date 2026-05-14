@@ -11,8 +11,8 @@ Dokumen ini menjelaskan alur, kapabilitas, dan tanggung jawab entitas Admin dala
 ## 3. Data & Batasan (*Constraints*)
 - **Entitas Utama**: `Admin`, `AdminStaff`, `PlatformType`, `SubscriptionPlan`, `SystemTask`.
 - **Definisi Mutlak**: 
-  - **Platform (Media Distribusi)**: Medium di mana toko akan ditampilkan (Web, Android, iOS). Seller wajib membeli rilis media ini agar.
-  - **Subscription Plan (Paket Langganan)**: Tingkatan level fitur operasional toko (misal: Starter, Pro, Enterprise). Ini dibeli *setelah* toko memiliki wujud Platform.
+  - **Platform (Media Distribusi)**: Medium di mana toko akan ditampilkan (Web, Android, iOS). Seller wajib membeli rilis media ini agar tokonya bisa tayang/memiliki wujud.
+  - **Subscription Plan (Paket Langganan)**: Tingkatan level fitur operasional toko. **Aturan Mutlak: Fitur ini dikunci TEPAT menjadi 3 Level (Misal: Starter, Pro, Enterprise)**. Admin hanya bisa merubah harganya, tetapi tidak boleh menghapus atau membuat tier baru, karena akan menghancurkan data Seller yang berlangganan tier tertentu. Ini dibeli *setelah* toko memiliki wujud Platform.
 - **Batasan**: Platform tidak menahan uang transaksi B2C; dana masuk ke Payment Gateway Seller. Admin memonitor deposit Seller untuk fee langganan/platform saja.
 
 ## 4. Ketetapan Sistem (*System Rulings*)
