@@ -1,8 +1,8 @@
 # Arsitektur Database: Skema Terdistribusi (Prisma)
 
-**PERINTAH UNTUK AI:** Saat membuat API atau Query, perhatikan bahwa sekarang ekosistem dibagi secara longgar antara **Core-API** (Data Utama & Finansial) dan **Support-API** (Konten, Chat, & Notifikasi). Skema di bawah ini adalah acuan utama. 
+**PERINTAH UNTUK AI:** Skema di bawah ini adalah acuan utama untuk *Core API Database* yang akan melayani ketiga entitas: Admin, Seller, dan Store. Seluruh tabel digabungkan menjadi satu skema Prisma (PostgreSQL).
 
-## 1. Skema Database Core-API (Finansial & User Management)
+## 1. Skema Database B2B2C (Finansial, User, & Support)
 
 Core-API menjadi _Single Source of Truth_ untuk Entitas Pengguna, Mutasi Saldo, Mutasi Deposit, dan Transaksi Pembelian.
 
@@ -360,10 +360,9 @@ model WalletMutation {
 }
 
 // -----------------------------------------------------
-// 7. Event & Task Queue (Core ke Support)
+// 7. Event & Task Queue
 // -----------------------------------------------------
 // Menyimpan perintah eksekusi background (cth: kirim email, broadcast notif)
-// Worker Support-API akan pull data ini sebagai loop Cronjob.
 model SystemTask {
   id              String   @id @default(uuid())
   taskType        String   // Misalnya: "SEND_EMAIL", "SEND_WHATSAPP", "BROADCAST_NOTIF"
@@ -373,20 +372,37 @@ model SystemTask {
   lastError       String?  @db.Text
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
-  
-  // Catatan: Jika sukses, sistem akan menghapus row ini untuk menghemat space (Tergantung rule backend).
+}
+
+// -----------------------------------------------------
+// 8. Modul Support & Resolusi Konflik
+// -----------------------------------------------------
+model Ticket {
+  id              String   @id @default(uuid())
+  storeId         String?  // Null jika tiket B2B (Seller ke Admin)
+  sellerId        String?  // Identitas Seller (B2B atau pemilik toko B2C)
+  customerId      String?  // Identitas Customer jika B2C
+  subject         String
+  status          String   @default("OPEN") // OPEN, IN_PROGRESS, RESOLVED, CLOSED
+  priority        String   @default("NORMAL") // LOW, NORMAL, HIGH, URGENT
+  referenceId     String?  // ID Transaksi (StoreOrder ID) terkait masalah ini
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  messages        TicketMessage[]
+}
+
+model TicketMessage {
+  id              String   @id @default(uuid())
+  ticketId        String
+  senderId        String   // ID dari pengirim (Bisa Admin, SellerStaff, atau Customer)
+  senderType      String   // ADMIN, SELLER_STAFF, CUSTOMER
+  message         String   @db.Text
+  attachments     Json?    // Array of URLs for images/docs
+  createdAt       DateTime @default(now())
+
+  ticket          Ticket   @relation(fields: [ticketId], references: [id], onDelete: Cascade)
 }
 
 ```
-
-## 2. Skema Database Support-API (NoSQL / MongoDB atau Terpisah)
-
-Karena fitur-fitur seperti *Chat*, *Banner*, *Docs*, dan *Notification* sudah dipisah, Support-API dirancang tanpa ikatan relasional ketat ke tabel finansial. Namun jika menggunakan PostgreSQL yang sama (schema terpisah/nama DB berbeda), stukturnya memuat entitas berikut tanpa foreign keys statis ke Core (hanya referensi `storeId`, `sellerId`, atau `customerId`):
-
-*   **SupportTicket** & **SupportMessage**: Menangani pesan support (Sistem <-> Seller / Seller <-> Pelanggan). Disertai data `storeId` atau `sellerId`.
-*   **SupportTemplate**: Quick reply content.
-*   **StoreDoc** / **StoreBanner** / **StoreNotification**: Entitas untuk membuat artikel toko, menampilkan info promosi, atau broadcast event.
-*   **AdminDoc** / **AdminBanner** / **AdminNotification**: Serupa untuk kebutuhan Admin Pusat.
-
-*AI Note: Anda dapat merancang tabel atau collection pada Support-API secara independen saat diinstruksikan membangunnya.*
 

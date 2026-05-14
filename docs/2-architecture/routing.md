@@ -41,7 +41,7 @@ _Contoh Implementasi:_
 
 ## 3. Rekomendasi Struktur Direktori (Backend)
 
-Saat mulai merakit kode (seperti di Node.js / Fastify), struktur berkas rute sebaiknya mencerminkan arsitektur di atas:
+Saat mulai merakit kode (seperti di Node.js / Express), struktur berkas rute sebaiknya mencerminkan arsitektur di atas:
 
 ```text
 /src

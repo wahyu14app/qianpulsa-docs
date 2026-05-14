@@ -7,35 +7,35 @@ Mengingat proyek ini adalah sebuah layanan **100% API (Headless)** tanpa antarmu
 ## 1. Tumpukan Teknologi Utama (Core Stack)
 
 1. **Runtime:** [Node.js](https://nodejs.org/) (Rekomendasi versi LTS terbaru, e.g., v20+).
-2. **Framework Web:** [Fastify](https://fastify.dev/). Digunakan sebagai fondasi server HTTP pengganti Express.js. Untuk aplikasi berskala finansial (PPOB/Payment) dengan lalu lintas pemrosesan Webhook yang tinggi, Fastify menawarkan performa (*Throughput*) 3-5x lebih tinggi dari Express. Selain itu, Fastify memiliki integrasi asinkron bawaan yang sangat aman untuk Prisma, menghindari "unhandled promise rejection" yang sering membekukan (hang) Express.js.
+2. **Framework Web:** [Express.js](https://expressjs.com/). Digunakan sebagai fondasi server HTTP. Express.js adalah framework Node.js yang paling umum digunakan dan didukung secara penuh oleh ekosistem platform ini. Karena kita beroperasi dalam lingkungan *full-stack* (Express + Vite middlewares jika ada), Node.js dengan Express adalah kerangka utama untuk membangun Core API B2B2C ini.
 3. **Bahasa Pemrograman:** [TypeScript](https://www.typescriptlang.org/). Ditetapkan dalam bentuk `strict mode` untuk meminimalkan *runtime error*, meningkatkan keakuratan intellisense/LLM Context, dan melindungi struktur transaksi objek B2C/B2B.
 4. **Database & ORM:** [PostgreSQL](https://www.postgresql.org/) berpasangan dengan [Prisma ORM](https://www.prisma.io/). Digunakan untuk manajemen dan migrasi struktur Database (RDBMS). Memudahkan deklarasi *schema-first* yang dikompilasi langsung menjadi *types* untuk TypeScript.
 
 ## 2. Library & Pustaka Backend Pendukung
 
-Demi mendukung skalabilitas dan sistem keamanan dari serangan eksploitasi, sistem mewajibkan penggabungan beberapa pustaka spesifik berikut ke dalam rantai `Fastify`:
+Demi mendukung skalabilitas dan sistem keamanan dari serangan eksploitasi, sistem mewajibkan penggabungan beberapa pustaka spesifik berikut ke dalam rantai `Express`:
 
-- **Validasi Data:** [`zod`](https://zod.dev/). Wajib dimanfaatkan sebagai *schema validation* untuk segala bentuk request yang masuk (`Body`, `Params`, maupun `Query`). Mencegah SQL Injection non-langsung dan manipulasi *payload*. Fastify mendukung validasi Zod secara native menggunakan `fastify-type-provider-zod`.
+- **Validasi Data:** [`zod`](https://zod.dev/). Wajib dimanfaatkan sebagai *schema validation* untuk segala bentuk request yang masuk (`Body`, `Params`, maupun `Query`). Mencegah SQL Injection non-langsung dan manipulasi *payload*.
 - **Kriptografi & Keamanan Kata Sandi:** [`argon2`](https://github.com/ranisalt/node-argon2) (Sangat direkomendasikan karena tahan terhadap eksploitasi GPU cracking) ATAU [`bcrypt`](https://github.com/kelektiv/node.bcrypt.js). Wajib digunakan pada entitas yang memiliki password (Admin, Seller, dll).
-- **Autentikasi Stateless:** [`@fastify/jwt`](https://github.com/fastify/fastify-jwt) (Sistem JWT ekosistem Fastify). Berguna untuk membuat Access Token (`Header Authorization Bearer`) guna autentikasi RBAC (*Role-Based Access Control*).
-- **Proteksi HTTP & CORS:** [`@fastify/helmet`](https://github.com/fastify/fastify-helmet) (Untuk menutupi *footprint* server di Header HTTP) dan [`@fastify/cors`](https://github.com/fastify/fastify-cors).
-- **Anti-Brute Force:** [`@fastify/rate-limit`](https://github.com/fastify/fastify-rate-limit). Sangat wajib dipasang pada *endpoint* login, pendaftaran pengguna, dan *endpoint Webhook* (Payment Gateway / PPOB Callback) untuk menghindari pengurasan resos via manipulasi pemanggilan (DDoS/Spam).
+- **Autentikasi Stateless:** [`jsonwebtoken`](https://github.com/auth0/node-jsonwebtoken). Berguna untuk membuat Access Token (`Header Authorization Bearer`) guna autentikasi RBAC (*Role-Based Access Control*).
+- **Proteksi HTTP & CORS:** [`helmet`](https://helmetjs.github.io/) (Untuk menutupi *footprint* server di Header HTTP) dan [`cors`](https://github.com/expressjs/cors).
+- **Anti-Brute Force:** [`express-rate-limit`](https://github.com/express-rate-limit/express-rate-limit). Sangat wajib dipasang pada *endpoint* login, pendaftaran pengguna, dan *endpoint Webhook* (Payment Gateway / PPOB Callback) untuk menghindari pengurasan resos via manipulasi pemanggilan (DDoS/Spam).
 
 ## 3. Struktur Direktori Proyek (Monolith-Modular Boilerplate)
 
-Susunan direktori pada `core-app` berbasis Fastify disepakati dengan konsep **Layered Architecture**. Pemisahan batas yang jelas (Clean Code) direkomendasikan dengan kerangka ini:
+Susunan direktori pada `core-app` berbasis Express disepakati dengan konsep **Layered Architecture**. Pemisahan batas yang jelas (Clean Code) direkomendasikan dengan kerangka ini:
 
 ```text
 /src
   ├── /config             # Menyimpan setelan koneksi (Database, Node.js ENV, API Clients).
   ├── /controllers        # Jembatan antara HTTP Request ke Services (Tidak boleh ada logic tebal di sini).
-  ├── /middlewares        # Filter global / Fastify Plugins (Auth JWT verification, Error Handler).
+  ├── /middlewares        # Filter global / Express Middlewares (Auth JWT verification, Error Handler, Vite Middleware).
   ├── /routes             # Pengkategorian Endpoint secara Namespace (e.g. /api/v1/admin, /api/v1/store).
   ├── /services           # Murni Core Business Logic (pemotongan saldo, validasi kuota, interaksi API ke Vendor).
   ├── /utils              # Fungsi helper global (Formatter response JSON API, Encryption class).
   ├── /validators         # Tempat penulisan tipe Skema Zod.
-  ├── app.ts              # Registrasi konfigurasi awal Fastify dan pemanggilan Global Plugin/Router.
-  └── server.ts           # Entry point (file eksekusi aplikasi "app.listen({ port: PORT })").
+  ├── app.ts              # Registrasi konfigurasi awal Express (API routes dan middlewares).
+  └── server.ts           # Entry point (menjalankan server pada port 3000 dan meng-host frontend SPA/Vite fallback).
 ```
 
 ## 4. Standar Aturan & Pola Pengkodean (Coding Patterns)
@@ -46,7 +46,7 @@ Sebagai sistem berbasis 100% API, patuhi prinsip arsitektur ini:
    *Controller* dilarang keras berisikan rantai kondisi penentuan kelayakan saldo atau integrasi ke Digiflazz! Tugas Controller hanyalah membongkar `request.body` dari pengguna, melempar data bersih ke *Service*, lalu melakukan `reply.send(responseService)`. Semua kompleksitas harus terisolasi di *Service*.
 
 2. **Global Error Handling API**
-   Server tidak boleh menampilkan pesan baris "Stack Trace" ke End-User. Fastify memiliki built-in `setErrorHandler`. Jika terjadi kondisi saldo tidak cukup, *Service* melemparkan error (`throw new AppError("Saldo PPOB tidak cukup", 400)`), lalu Error Handler otomatis mengubahnya menjadi standar format respons API JSON yang layak.
+   Server tidak boleh menampilkan pesan baris "Stack Trace" ke End-User. Buat Global Error Middleware pada Express. Jika terjadi kondisi saldo tidak cukup, *Service* melemparkan error (`throw new AppError("Saldo PPOB tidak cukup", 400)`), lalu Error Middleware otomatis mengubahnya menjadi standar format respons API JSON yang layak (e.g. `res.status(err.statusCode).json({ error: ... })`).
 
 3. **Rest API Murni tanpa Session Storage**
    Setiap request masuk bersifat merdeka (*stateless*) yang selalu divalidasi lewat verifikasi JWT Middleware di atas.
@@ -62,11 +62,11 @@ Tahapan untuk AI/Developer dalam mengkonfigurasi `core-app` awal:
 2. Konfigurasi Typescript: Buat `tsconfig.json` dengan nilai `"strict": true`, dan `"esModuleInterop": true`.
 3. Pasang dependency inti:
    ```bash
-   npm install fastify @fastify/cors @fastify/helmet @fastify/jwt @fastify/rate-limit zod fastify-type-provider-zod argon2 dotenv prisma @prisma/client
+   npm install express cors helmet jsonwebtoken express-rate-limit zod argon2 dotenv prisma @prisma/client
    ```
 4. Pasang dev-dependency:
    ```bash
-   npm install -D typescript @types/node tsx
+   npm install -D typescript @types/node @types/express @types/cors @types/jsonwebtoken tsx
    ```
-5. Siapkan `server.ts` dan jalankan menggunakan eksekutor dev TS seperti `tsx`.
-6. Tulis Endpoint **Health Check** standar `/api/v1/health` guna mengetahui status online API dan kondisi konektivitas ke Postgres (Prisma Test Payload).
+5. Siapkan `server.ts` dan pastikan mem-bind ke post `3000` (host `0.0.0.0`) sesuai dengan standar *environment* AI Studio.
+6. Tulis Endpoint **Health Check** standar `/api/health` guna mengetahui status online API dan kondisi konektivitas ke Postgres (Prisma Test Payload).

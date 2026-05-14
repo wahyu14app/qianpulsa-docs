@@ -15,9 +15,13 @@ AI juga akan membaca dokumen di dalam folder ini untuk memahami **konteks, batas
 ## 📂 Daftar Dokumen Bisnis:
 Silakan jelajahi dokumen berikut untuk memahami detail logika bisnis untuk tiap modul:
 
-- 🏢 **[Ekosistem & Tenant](./tenant_ecosystem.md)**: Konsep multi-tenant, hierarki toko, dan arsitektur B2B2C.
-- 💰 **[Transaksi, Cashback, & Referral](./transaction.md)**: Logika markup harga, komisi rujukan (referral), dan alur cashback secara finansial.
-- 👥 **[Manajemen Pengguna](./user_management.md)**: Definisi hak akses untuk Admin, Seller, Staff, dan Customer.
+- 👑 **[Admin (Platform Induk)](./admin.md)**: Kapabilitas dan peran pengelola utama.
+- 🏪 **[Seller (Pemilik Toko)](./seller.md)**: Onboarding, batasan fitur, finansial B2B dan manajemen API mandiri pemilik tenant.
+- 🛍️ **[Store (Toko)](./store.md)**: Definisi domain tenant, strategi harga (markup), dan alur pelayanan integrasi yang mendukung jalannya sebuah brand tenant.
+- 👥 **[Customer (Pelanggan)](./customer.md)**: Interaksi ujung transaksi dari pembeli (B2C), proses auth, deposit dan aturan main sistem pembayaran di platform.
+- 🎧 **[Support (Pusat Bantuan)](./support.md)**: Ekosistem komunikasi untuk resolusi konflik antara CS Admin-Seller maupun CS Seller-Customer.
 - 🔌 **[Integrasi Pihak Ketiga](./integrations.md)**: Gambaran layanan pendukung luar (PPOB, Payment Gateway, Notifikasi) dan perannya dalam ekosistem.
 
-*Catatan: Dokumen ini berfokus pada alur bisnis dan **TIDAK** berisi baris kode atau detail endpoints API. Untuk panduan teknis implementasi, silakan rujuk folder `/docs/ai-prompts/` atau `/docs/architecture/`.*
+> **Catatan Struktur**: Setiap dokumen menggunakan standar template yang mencakup *Ikhtisar, Alur Kerja Utama, Data & Batasan, serta Pertanyaan Klarifikasi*. Bagian *Pertanyaan Klarifikasi* adalah daftar poin yang harus dijawab/dikonfirmasi untuk menetapkan parameter fitur sebelum diimplementasikan ke dalam kode.
+
+*Catatan: Dokumen ini berfokus pada alur bisnis dan **TIDAK** berisi baris kode atau detail endpoints API. Untuk panduan teknis implementasi, silakan rujuk folder `/docs/3-ai-prompts/` atau `/docs/2-architecture/`.*

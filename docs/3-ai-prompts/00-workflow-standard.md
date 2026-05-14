@@ -17,27 +17,26 @@ Setiap tugas/fase pengembangan **HARUS** melalui 3 tahapan iteratif ini:
 ### Tahap A: Konteks & Prasyarat (Context Awareness)
 Sebelum menulis satu barispun kode:
 1. **Periksa Prasyarat**: Temukan file dependensi atau skema database yang relevan.
-   * *Contoh*: Jika ingin membangun API User, baca `/docs/architecture/database-schema.md` terlebih dahulu untuk memastikan nama kolom dan relasi.
-2. **Periksa Aturan**: Baca `/docs/architecture/limits-and-constraints.md` untuk mengetahui batasan teknologi (misal: dilarang `.env` di lingkungan tertentu).
+   * *Contoh*: Jika ingin membangun API User, baca `/docs/2-architecture/database-schema.md` terlebih dahulu untuk memastikan nama kolom dan relasi.
+2. **Periksa Aturan**: Baca batasan operasional dan teknis jika relevan.
 
 ### Tahap B: Implementasi (Execution)
 1. **Modularitas**: Kode harus dipisah berdasarkan tanggung jawab (Service, Controller, Route).
 2. **Validasi (Zod)**: Gunakan Zod wajib untuk setiap payload request.
-3. **Dokumentasi**: Jika mengubah alur bisnis atau API, Anda WAJIB memperbarui Markdown di `/docs/` yang relevan sebelum/bersamaan dengan *commit* kode.
+3. **Dokumentasi**: Jika mengubah alur bisnis atau API, Anda WAJIB memperbarui Markdown di `/docs/1-human-manual/` atau `/docs/2-architecture/` yang relevan sebelum/bersamaan dengan *commit* kode.
 
 ### Tahap C: Verifikasi (Verification)
-1. **Checklist**: Jalankan verifikasi berdasarkan `/docs/architecture/verification-checklist.md`.
-2. **Linting & Build**: Jalankan `lint_applet` dan `compile_applet` (sesuai arahan tool).
+1. **Checklist**: Pastikan kode mematuhi alur B2B/B2C dari *Human Manual*.
+2. **Linting & Build**: Jalankan perintah kompilasi lokal untuk memastikan tidak ada *error* sintaksis.
 
 ## 3. Tabel Matriks Prasyarat Coding
 
 | Target Tugas | Prasyarat Wajib Baca (Sesi Konteks) |
 | :--- | :--- |
-| **API Endpoints** | `architecture/routing.md`, `architecture/request-response.md` |
-| **Database/Prisma** | `architecture/database-schema.md` |
-| **Autentikasi** | `architecture/authentication.md` |
-| **Modul Bisnis (Apps)** | `apps/module-*.md` dan API teknis terkait |
-| **Integrasi** | `human-manual/integrations.md`, `architecture/integrations.md` |
+| **API Endpoints** | `2-architecture/routing.md`, `2-architecture/request-response.md` |
+| **Database/Prisma** | `2-architecture/database-schema.md` |
+| **Autentikasi** | `2-architecture/authentication.md` |
+| **Integrasi** | `1-human-manual/integrations.md`, `2-architecture/integrations.md` |
 
 ---
 **Pesan Akhir:** Jika Anda menemukan dokumentasi yang usang, bentrok, atau kurang informatif saat menjalankan alur ini, **tugas pertama Anda adalah memperbaiki dokumentasi tersebut** sebelum melanjutkan coding. Jangan mengasumsikan apapun.
