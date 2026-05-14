@@ -17,4 +17,3 @@ Dokumen ini menjelaskan alur, kapabilitas, dan tanggung jawab entitas Admin dala
 - *Dalam manajemen jabatan, apakah daftar *permissions* bersifat dinamis (di-DB) atau *hardcoded* dalam sistem?* -> Dinamis dan disimpan di dalam Database (array routing access/permissions, contoh `["read:/sellers", "readWrite:/platform"]`).
 - *Apa yang terjadi jika langganan Seller kedaluwarsa? Apakah toko ditutup paksa sementara?* -> **Ya**. Front-end *Store App* beralih ke Mode Maintenance ("Toko Sedang Tutup"). Menu operasional di *Seller App* akan terkunci (ter-lock) kembali ke mode *Onboarding* di mana mereka hanya bisa mengakses menu Deposit dan Pembelian Paket.
 - *Apakah ada *task* rekonsiliasi data selain interaksi API pihak ketiga?* -> **Ya**. Terdapat *Cron Job* reguler di sisi Core API untuk mengecek pemutusan langganan (*Subscription Expired*) dan mengeksekusi reset transaksi yang terlalu lama *stuck/pending*.
-

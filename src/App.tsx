@@ -88,6 +88,7 @@ const FileTreeItem = ({ node, level, activeFile, onSelect }: { node: FileNode, l
 };
 
 export default function App() {
+  console.log("App loaded at", new Date().toISOString());
   const [activeFile, setActiveFile] = useState<string>('/README.md');
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [markdownContent, setMarkdownContent] = useState<string>('');
